@@ -5,6 +5,7 @@
 # (z changes fastest, followed by y and x)
 #
 import os
+import sys
 import csv
 import copy
 import numpy as np
@@ -75,6 +76,7 @@ for d in range(len(data1)):
     my.append(mydata)
     mz.append(mzdata)
     msiso.append(msisodata)
+
 # write cube file
 with open('cube.cube', 'w', newline='') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter='\t',
@@ -82,13 +84,19 @@ with open('cube.cube', 'w', newline='') as csvfile:
     cubewriter.writerow(['C9H9+ HF/6-311++G(d,p) nmr partial 3d grid'])
     cubewriter.writerow(['OUTER LOOP: X, MIDDLE '
                          'LOOP: Y, INNER LOOP: Z'])
-    # number of atoms,
+    # NAtoms, X-Origin, Y-Origin, Z-Origin NVal
     cubewriter.writerow([18, "%.6f" % (nx * delta / br), "%.6f" % (-ny * delta / br),
                          "%.6f" % (-nz * delta / br)])
+    # N1, X1, Y1, Z1               # of increments in the slowest running direction
+    # N2, X2, Y2, Z2
+    # N3, X3, Y3, Z3               # of increments in the fastest running direction
     cubewriter.writerow([2 * nx + 1, "%.6f" % (delta / br), "%.6f" % 0.000000, "%.6f" % 0.000000])
     cubewriter.writerow([2 * ny + 1, "%.6f" % 0.0, "%.6f" % (delta / br), "%.6f" % 0.0])
     cubewriter.writerow([2 * nz + 1, "%.6f" % 0.000000, "%.6f" % 0.000000, "%.6f" % (delta / br)])
-    # geo
+    # geo of c9h9+
+    # IA1, Chg1, X1, Y1, Z1        Atomic number, charge, and coordinates of the first atom
+    # …
+    # IAn, Chgn, Xn, Yn, Zn        Atomic number, charge, and coordinates of the last atom
     cubewriter.writerow([6,"%.6f" % 6.0,"%.6f" % (0.0/br),"%.6f" % (0.0/br),"%.6f" % (1.645014194/br)])
     cubewriter.writerow(
             [6, "%.6f" % 6.0, "%.6f" % (0.4905022324 / br), "%.6f" % (1.2427684773 / br), "%.6f" % (1.1554414148/br)])
@@ -123,6 +131,7 @@ with open('cube.cube', 'w', newline='') as csvfile:
             [1, "%.6f" % 1.0, "%.6f" % (-1.490812806 / br), "%.6f" % (-0.3325910524 / br), "%.6f" % (-1.6109751404/br)])
     cubewriter.writerow(
             [1, "%.6f" % 1.0, "%.6f" % (1.490812806 / br), "%.6f" % (0.3325910524 / br), "%.6f" % (-1.6109751404/br)])
+    # (N1*N2) records, each of length N3     Values of the density at each point in the grid
     for nc in range(0,len(msiso),6):
         rest = len(msiso) % 6
         if nc + 6 + rest <= len(msiso):
@@ -138,4 +147,5 @@ with open('cube.cube', 'w', newline='') as csvfile:
             cubewriter.writerow([siso[nc],siso[c + 1],siso[c + 2]])
     pass
 csvfile.close()
+
 print(len(msiso))
