@@ -42,9 +42,9 @@ my = []
 mz = []
 msiso = []
 br = 0.5291772083
-nx = 140
-ny = 180
-nz = 140
+nx = 70
+ny = 90
+nz = 70
 delta = 0.05
 
 # reflect (x,y,z) to (-x,-y,z), a C2 operating
@@ -85,7 +85,7 @@ with open('cube.cube', 'w', newline='') as csvfile:
     cubewriter.writerow(['OUTER LOOP: X, MIDDLE '
                          'LOOP: Y, INNER LOOP: Z'])
     # NAtoms, X-Origin, Y-Origin, Z-Origin NVal
-    cubewriter.writerow([18, "%.6f" % (nx * delta / br), "%.6f" % (-ny * delta / br),
+    cubewriter.writerow([18, "%.6f" % (-nx * delta / br), "%.6f" % (-ny * delta / br),
                          "%.6f" % (-nz * delta / br)])
     # N1, X1, Y1, Z1               # of increments in the slowest running direction
     # N2, X2, Y2, Z2

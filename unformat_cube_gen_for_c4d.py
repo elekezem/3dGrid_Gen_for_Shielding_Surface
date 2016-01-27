@@ -42,9 +42,9 @@ my = []
 mz = []
 msiso = []
 br = 0.5291772083
-nx = 140
-ny = 180
-nz = 140
+nx = 70
+ny = 90
+nz = 70
 delta = 0.05
 
 # reflect (x,y,z) to (-x,-y,z), a C2 operating
