@@ -1,12 +1,13 @@
 #
-# Reflects the partial 3d grid for D6h benzene as
+# Reflects the partial 3d grid for C2 c9h9+ as
 # (x,y,z) -> (-x,-y,z)
 # and prints GAUSSIAN cube data in x, y, z order
 # (z changes fastest, followed by y and x)
 #
 import os
 import csv
-import numpy
+import copy
+import numpy as np
 import math
 import decimal
 from _decimal import *
@@ -40,6 +41,9 @@ my = []
 mz = []
 msiso = []
 br = 0.5291772083
+nx = 140
+ny = 180
+nz = 140
 delta = 0.05
 
 # reflect (x,y,z) to (-x,-y,z), a C2 operating
@@ -71,21 +75,67 @@ for d in range(len(data1)):
     my.append(mydata)
     mz.append(mzdata)
     msiso.append(msisodata)
-
 # write cube file
 with open('cube.cube', 'w', newline='') as csvfile:
-    cubewriter = csv.writer(csvfile, delimiter=' ',
+    cubewriter = csv.writer(csvfile, delimiter='\t',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
     cubewriter.writerow(['C9H9+ HF/6-311++G(d,p) nmr partial 3d grid'])
-    cubewriter.writerow(['x,y,z: -3.5(0.05)3.5 A '
-                         'exp. geom. (1.3964/1.0831)'])
-    cubewriter.writerow([18])
-    # for c in range(len(x)):
-    for c in range(100):
-        cubewriter.writerow([x[c], y[c], z[c], siso[c]])
+    cubewriter.writerow(['OUTER LOOP: X, MIDDLE '
+                         'LOOP: Y, INNER LOOP: Z'])
+    # number of atoms,
+    cubewriter.writerow([18, "%.6f" % (nx * delta / br), "%.6f" % (-ny * delta / br),
+                         "%.6f" % (-nz * delta / br)])
+    cubewriter.writerow([2 * nx + 1, "%.6f" % (delta / br), "%.6f" % 0.000000, "%.6f" % 0.000000])
+    cubewriter.writerow([2 * ny + 1, "%.6f" % 0.0, "%.6f" % (delta / br), "%.6f" % 0.0])
+    cubewriter.writerow([2 * nz + 1, "%.6f" % 0.000000, "%.6f" % 0.000000, "%.6f" % (delta / br)])
+    # geo
+    cubewriter.writerow([6,"%.6f" % 6.0,"%.6f" % (0.0/br),"%.6f" % (0.0/br),"%.6f" % (1.645014194/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (0.4905022324 / br), "%.6f" % (1.2427684773 / br), "%.6f" % (1.1554414148/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (-0.4905022324 / br), "%.6f" % (-1.2427684773 / br), "%.6f" % (1.1554414148/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (0.0100585215 / br), "%.6f" % (2.0928052569 / br), "%.6f" % (0.1040785875/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (-0.0100585215 / br), "%.6f" % (-2.0928052569 / br), "%.6f" % (0.1040785875/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (-0.8152087457 / br), "%.6f" % (1.6410894083 / br), "%.6f" % (-0.9354914584/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (0.8152087457 / br), "%.6f" % (-1.6410894083 / br), "%.6f" % (-0.9354914584/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (-0.6569284614 / br), "%.6f" % (0.2832859329 / br), "%.6f" % (-1.251946014/br)])
+    cubewriter.writerow(
+            [6, "%.6f" % 6.0, "%.6f" % (0.6569284614 / br), "%.6f" % (-0.2832859329 / br), "%.6f" % (-1.251946014/br)])
+    cubewriter.writerow([1, "%.6f" % 1.0, "%.6f" % (0. / br), "%.6f" % (0. / br), "%.6f" % (2.7459418542/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (1.0699783805 / br), "%.6f" % (1.7858874614 / br), "%.6f" % (1.9137457041/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (-1.0699783805 / br), "%.6f" % (-1.7858874614 / br), "%.6f" % (1.9137457041/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (0.12964425 / br), "%.6f" % (3.1677255378 / br), "%.6f" % (0.2859658405/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (-0.12964425 / br), "%.6f" % (-3.1677255378 / br), "%.6f" % (0.2859658405/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (-1.5936377795 / br), "%.6f" % (2.2790433661 / br), "%.6f" % (-1.3665504299/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (1.5936377795 / br), "%.6f" % (-2.2790433661 / br), "%.6f" % (-1.3665504299/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (-1.490812806 / br), "%.6f" % (-0.3325910524 / br), "%.6f" % (-1.6109751404/br)])
+    cubewriter.writerow(
+            [1, "%.6f" % 1.0, "%.6f" % (1.490812806 / br), "%.6f" % (0.3325910524 / br), "%.6f" % (-1.6109751404/br)])
+    for nc in range(0,len(msiso),6):
+        rest = len(msiso) % 6
+        if nc + 6 + rest <= len(msiso):
+            cubewriter.writerow([msiso[nc+p] for p in range(6)])
+        else:
+            cubewriter.writerow([msiso[nc],msiso[nc + 1],msiso[nc + 2]])
     pass
-    # for nc in range(len(nx)):
-    for nc in range(100):
-        cubewriter.writerow([mx[nc], my[nc], mz[nc], msiso[nc]])
+    for c in range(0,len(siso),6):
+        rest2 = len(siso) % 6
+        if c + 6 + rest2 <= len(siso):
+            cubewriter.writerow([siso[c+p] for p in range(6)])
+        else:
+            cubewriter.writerow([siso[nc],siso[c + 1],siso[c + 2]])
     pass
 csvfile.close()
+print(len(msiso))
