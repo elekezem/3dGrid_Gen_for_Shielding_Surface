@@ -8,7 +8,6 @@ import os
 import sys
 import csv
 import copy
-import numpy as np
 import math
 import decimal
 from _decimal import *
