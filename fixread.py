@@ -5,11 +5,10 @@ import copy
 
 skip = 0
 
-class cubefile_header:
-
 
 def main():
 
+    global idx
     f = open('c2','r')
 
     while f:
@@ -19,13 +18,16 @@ def main():
 
             idx = int(idx)
             if (x * y * z != 0):
-                bs.Select(index)
+
 
             points.append(v)
         except ValueError:
             break
 
-        for i in range(skip):
+
+class CubefileHeader:
+
+    for i in range(skip):
             f.readline()
 
         index += 1
