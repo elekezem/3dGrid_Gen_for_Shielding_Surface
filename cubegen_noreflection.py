@@ -32,9 +32,9 @@ data7 = []
 data8 = []
 
 # set xyz lists and C2 opreating
-x = []
-y = []
-z = []
+x_loop = []
+y_loop = []
+z_loop = []
 siso = []
 mx = []
 my = []
@@ -67,9 +67,9 @@ for d in range(len(data1)):
     mydata = "%.6f" % data6[d]
     mzdata = "%.6f" % data7[d]
     msisodata = "%.6f" % data8[d]
-    x.append(xdata)
-    y.append(ydata)
-    z.append(zdata)
+    x_loop.append(xdata)
+    y_loop.append(ydata)
+    z_loop.append(zdata)
     siso.append(sisodata)
     mx.append(mxdata)
     my.append(mydata)
@@ -77,7 +77,7 @@ for d in range(len(data1)):
     msiso.append(msisodata)
 
 # write cube file
-with open('cube.cube', 'w', newline='') as csvfile:
+with open('cube_noreflaction.cube', 'w', newline='') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter='\t',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
     cubewriter.writerow(['C9H9+ HF/6-311++G(d,p) nmr partial 3d grid'])

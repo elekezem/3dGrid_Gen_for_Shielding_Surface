@@ -32,9 +32,9 @@ data7 = []
 data8 = []
 
 # set xyz lists and C2 opreating
-x = []
-y = []
-z = []
+x_loop = []
+y_loop = []
+z_loop = []
 siso = []
 mx = []
 my = []
@@ -67,9 +67,9 @@ for d in range(len(data1)):
     mydata = "%.6f" % data6[d]
     mzdata = "%.6f" % data7[d]
     msisodata = "%.6f" % data8[d]
-    x.append(xdata)
-    y.append(ydata)
-    z.append(zdata)
+    x_loop.append(xdata)
+    y_loop.append(ydata)
+    z_loop.append(zdata)
     siso.append(sisodata)
     mx.append(mxdata)
     my.append(mydata)
@@ -149,6 +149,6 @@ with open('unformartcube.cube', 'w', newline='') as csvfile:
         cubewriter.writerow([mx[nc],my[nc],mz[nc],msiso[nc]])
     pass
     for c in range(len(siso)):
-        cubewriter.writerow([x[c],y[c],z[c],siso[c]])
+        cubewriter.writerow([x_loop[c], y_loop[c], z_loop[c], siso[c]])
     pass
 csvfile.close()
