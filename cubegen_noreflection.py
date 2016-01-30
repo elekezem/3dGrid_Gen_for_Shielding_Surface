@@ -46,6 +46,7 @@ ny = 90
 nz = 70
 delta = 0.05
 
+
 # reflect (x,y,z) to (-x,-y,z), a C2 operating
 for k in range(len(data1)):
     data5.append(k)
