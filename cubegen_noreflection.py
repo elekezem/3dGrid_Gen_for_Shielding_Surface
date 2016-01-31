@@ -10,6 +10,7 @@ import csv
 import copy
 import math
 import decimal
+import numpy
 from _decimal import *
 
 MAXCOLS = 9
