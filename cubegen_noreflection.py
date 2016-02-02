@@ -87,7 +87,7 @@ with open('cube_noreflaction.cube', 'w', newline='') as csvfile:
                          'LOOP: Y, INNER LOOP: Z'])
     # NAtoms, X-Origin, Y-Origin, Z-Origin NVal
     cubewriter.writerow([18, "%.6f" % (-nx * delta / br), "%.6f" % 0.0,
-                         "%.6f" % (-nz * delta / br)])
+                         "%.6f" % ((-nz + 10) * delta / br)])
     # N1, X1, Y1, Z1               # of increments in the slowest running direction
     # N2, X2, Y2, Z2
     # N3, X3, Y3, Z3               # of increments in the fastest running direction
