@@ -6,12 +6,19 @@
 import csv
 import operator
 
-data = open('c2f', 'r')
-csv1 = csv.reader(data, delimiter=' ')
+M = []
+N = []
 
-sort0 = sorted(csv1, key=operator.itemgetter(1))
-print(sort0)
-with open('grid', 'w', newline='') as csvfile:
+data = open('unformartcube.cube', 'r')
+csv1 = csv.reader(data, delimiter='\t')
+
+for i in csv1:
+    N = list(map(float, i))
+    M.append(N)
+
+sort0 = sorted(M, key=operator.itemgetter(0, 1, 2))
+
+with open('grid2', 'w', newline='') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter='\t',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
     for eachline in sort0:
