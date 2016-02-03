@@ -9,7 +9,7 @@ import operator
 M = []
 N = []
 
-data = open('unformartcube.cube', 'r')
+data = open('unformartcube2.cube', 'r')
 csv1 = csv.reader(data, delimiter='\t')
 
 for i in csv1:
@@ -18,7 +18,7 @@ for i in csv1:
 
 sort0 = sorted(M, key=operator.itemgetter(0, 1, 2))
 
-with open('grid2', 'w', newline='') as csvfile:
+with open('grid', 'w', newline='') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter='\t',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
     for eachline in sort0:
