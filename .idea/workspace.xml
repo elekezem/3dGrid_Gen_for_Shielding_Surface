@@ -89,8 +89,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="259" />
-    <option name="y" value="27" />
+    <option name="x" value="789" />
+    <option name="y" value="93" />
     <option name="width" value="1442" />
     <option name="height" value="973" />
   </component>
@@ -683,7 +683,13 @@
       <option name="project" value="LOCAL" />
       <updated>1455667229664</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="all finish!!!">
+      <created>1455667306567</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1455667306567</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -696,7 +702,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="259" y="27" width="1442" height="973" extended-state="0" />
+    <frame x="789" y="93" width="1442" height="973" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20428571" sideWeight="0.4959596" order="0" side_tool="false" content_ui="combo" />
