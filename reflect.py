@@ -94,6 +94,12 @@ for z in list_y_zero:
     zero_z.append(ori_data_z[z])
     zero_siso.append((ori_data_siso[z]))
 
+# def formart_digits(t, loop_t=None):
+#     for d in range(len(t)):
+#         data_t = "%.6f" % t[d]
+#         loop_t.appnd(data_t)
+#     return loop_t
+
 # change float digits into 6
 for d in range(len(tmp_x)):
     xdata = "%.6f" % tmp_x[d]
