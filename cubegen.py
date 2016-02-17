@@ -11,7 +11,7 @@ import csv
 
 MAXCOLS = 9
 cols = [[] for _ in range(MAXCOLS)]
-with open('grid', 'r') as data:
+with open('fullgrid', 'r') as data:
     for row in csv.reader(data, delimiter='\t'):
         for i in range(MAXCOLS):
             cols[i].append(row[i] if i < len(row) else '')

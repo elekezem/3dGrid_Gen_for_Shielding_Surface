@@ -133,7 +133,7 @@ for d in range(len(neg_x)):
 
 
 # write cube file
-with open('unformartcube2.cube', 'w') as csvfile:
+with open('unsortcube', 'w') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter='\t',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
     for nc in range(len(siso_zero)):
