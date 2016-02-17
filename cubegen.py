@@ -55,40 +55,15 @@ with open('cube.cube', 'w', newline='') as csvfile:
     # IA1, Chg1, X1, Y1, Z1        Atomic number, charge, and coordinates of the first atom
     # …
     # IAn, Chgn, Xn, Yn, Zn        Atomic number, charge, and coordinates of the last atom
-    cubewriter.writerow([6, "%.6f" % 6.0, "%.6f" % (0.0/br), "%.6f" % (0.0/br), "%.6f" % (1.645014194/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (0.4905022324 / br), "%.6f" % (1.2427684773 / br), "%.6f" % (1.1554414148/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (-0.4905022324 / br), "%.6f" % (-1.2427684773 / br), "%.6f" % (1.1554414148/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (0.0100585215 / br), "%.6f" % (2.0928052569 / br), "%.6f" % (0.1040785875/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (-0.0100585215 / br), "%.6f" % (-2.0928052569 / br), "%.6f" % (0.1040785875/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (-0.8152087457 / br), "%.6f" % (1.6410894083 / br), "%.6f" % (-0.9354914584/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (0.8152087457 / br), "%.6f" % (-1.6410894083 / br), "%.6f" % (-0.9354914584/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (-0.6569284614 / br), "%.6f" % (0.2832859329 / br), "%.6f" % (-1.251946014/br)])
-    cubewriter.writerow(
-            [6, "%.6f" % 6.0, "%.6f" % (0.6569284614 / br), "%.6f" % (-0.2832859329 / br), "%.6f" % (-1.251946014/br)])
-    cubewriter.writerow([1, "%.6f" % 1.0, "%.6f" % (0. / br), "%.6f" % (0. / br), "%.6f" % (2.7459418542/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (1.0699783805 / br), "%.6f" % (1.7858874614 / br), "%.6f" % (1.9137457041/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (-1.0699783805 / br), "%.6f" % (-1.7858874614 / br), "%.6f" % (1.9137457041/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (0.12964425 / br), "%.6f" % (3.1677255378 / br), "%.6f" % (0.2859658405/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (-0.12964425 / br), "%.6f" % (-3.1677255378 / br), "%.6f" % (0.2859658405/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (-1.5936377795 / br), "%.6f" % (2.2790433661 / br), "%.6f" % (-1.3665504299/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (1.5936377795 / br), "%.6f" % (-2.2790433661 / br), "%.6f" % (-1.3665504299/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (-1.490812806 / br), "%.6f" % (-0.3325910524 / br), "%.6f" % (-1.6109751404/br)])
-    cubewriter.writerow(
-            [1, "%.6f" % 1.0, "%.6f" % (1.490812806 / br), "%.6f" % (0.3325910524 / br), "%.6f" % (-1.6109751404/br)])
+
+    cubewriter.writerow([6,"%.6f" % 6.0,"%.6f" % (0.0000000/br),"%.6f" % (1.30910000/br),"%.6f" % (0.00000000/br)])
+    cubewriter.writerow([6,"%.6f" % 6.0,"%.6f" % (0.0000000/br),"%.6f" % (0.00000000/br),"%.6f" % (0.00000000/br)])
+    cubewriter.writerow([6,"%.6f" % 6.0,"%.6f" % (0.0000000/br),"%.6f" % (-1.30910000/br),"%.6f" % (0.00000000/br)])
+    cubewriter.writerow([1,"%.6f" % 1.0,"%.6f" % (0.0000000/br),"%.6f" % (1.86625769/br),"%.6f" % (0.93241930/br)])
+    cubewriter.writerow([1,"%.6f" % 1.0,"%.6f" % (0.0000000/br),"%.6f" % (1.86625769/br),"%.6f" % (-0.93241930/br)])
+    cubewriter.writerow([1,"%.6f" % 1.0,"%.6f" % (-0.9324193/br),"%.6f" % (-1.86625769/br),"%.6f" % (0.00000000/br)])
+    cubewriter.writerow([1,"%.6f" % 1.0,"%.6f" % (0.9324193/br),"%.6f" % (-1.86625769/br),"%.6f" % (0.00000000/br)])
+
     # (N1*N2) records, each of length N3     Values of the density at each point in the grid
     cubewriter2 = csv.writer(csvfile, delimiter=' ',
                         quotechar=' ', quoting=csv.QUOTE_MINIMAL)
