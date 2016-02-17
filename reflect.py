@@ -28,20 +28,20 @@ items_in_list = 0
 
 MAXCOLS = 9
 cols = [[] for _ in range(MAXCOLS)]
-with open('c2', 'r') as input:
-    for row in csv.reader(input, delimiter=' '):
+with open('reflection-mp2.csv', 'r') as input:
+    for row in csv.reader(input, delimiter=','):
         for i in range(MAXCOLS):
             cols[i].append(row[i] if i < len(row) else '')
 
 # change cols[i] data type into float
-ori_data_x = list(map(float, cols[1]))
-ori_data_y = list(map(float, cols[2]))
-ori_data_z = list(map(float, cols[3]))
-ori_data_siso = list(map(float, cols[4]))
-tmp_x = list(map(float, cols[1]))
-tmp_y = list(map(float, cols[2]))
-tmp_z = list(map(float, cols[3]))
-tmp_siso = list(map(float, cols[4]))
+ori_data_x = list(map(float, cols[0]))
+ori_data_y = list(map(float, cols[1]))
+ori_data_z = list(map(float, cols[2]))
+ori_data_siso = list(map(float, cols[3]))
+tmp_x = list(map(float, cols[0]))
+tmp_y = list(map(float, cols[1]))
+tmp_z = list(map(float, cols[2]))
+tmp_siso = list(map(float, cols[3]))
 neg_x = []
 neg_y = []
 neg_z = []
