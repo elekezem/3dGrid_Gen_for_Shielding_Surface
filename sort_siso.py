@@ -9,7 +9,7 @@ import operator
 M = []
 N = []
 
-data = open('unformartcube2.cube', 'r')
+data = open('unformartcube.cube', 'r')
 csv1 = csv.reader(data, delimiter='\t')
 
 for i in csv1:

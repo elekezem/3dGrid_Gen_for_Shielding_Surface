@@ -1,5 +1,5 @@
 #
-# Reflects the partial 3d grid for C2 c9h9+ as
+# Reflects the partial 3d grid for D2d C3H4 as
 # (x,y,z) -> (-x,-y,z)
 # and prints GAUSSIAN cube data in x, y, z order
 # (z changes fastest, followed by y and x)
@@ -22,12 +22,12 @@ data4 = list(map(float, cols[3]))
 
 print(len(data4))
 
-# set xyz lists and C2 opreating
+# set xyz lists and D2d opreating
 siso = []
 br = 0.5291772083
-nx = 70
-ny = 90
-nz = 70
+nx = 59
+ny = 59
+nz = 59
 delta = 0.05
 
 # change float digits into 6
@@ -39,19 +39,20 @@ for d in range(len(data4)):
 with open('cube.cube', 'w', newline='') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter='\t',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
-    cubewriter.writerow(['C9H9+ HF/6-311++G(d,p) nmr partial 3d grid'])
+    cubewriter.writerow(['C3H4 MP2/6-311++G(d,p) nmr partial 3d grid'])
     cubewriter.writerow(['OUTER LOOP: X, MIDDLE '
                          'LOOP: Y, INNER LOOP: Z'])
     # NAtoms, X-Origin, Y-Origin, Z-Origin NVal
-    cubewriter.writerow([18, "%.6f" % (-nx * delta / br), "%.6f" % (-ny * delta / br),
-                         "%.6f" % ((-nz + 10) * delta / br)])
+    cubewriter.writerow([7, "%.6f" % (-nx * delta / br), "%.6f" % (-ny * delta / br),
+                         "%.6f" % (-nz * delta / br)])
     # N1, X1, Y1, Z1               # of increments in the slowest running direction
     # N2, X2, Y2, Z2
     # N3, X3, Y3, Z3               # of increments in the fastest running direction
     cubewriter.writerow([2 * nx + 1, "%.6f" % (delta / br), "%.6f" % 0.000000, "%.6f" % 0.000000])
     cubewriter.writerow([2 * ny + 1, "%.6f" % 0.0, "%.6f" % (delta / br), "%.6f" % 0.0])
     cubewriter.writerow([2 * nz + 1, "%.6f" % 0.000000, "%.6f" % 0.000000, "%.6f" % (delta / br)])
-    # geo of c9h9+
+
+    # geo of c3h4
     # IA1, Chg1, X1, Y1, Z1        Atomic number, charge, and coordinates of the first atom
     # …
     # IAn, Chgn, Xn, Yn, Zn        Atomic number, charge, and coordinates of the last atom
