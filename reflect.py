@@ -4,9 +4,11 @@
 # and prints GAUSSIAN cube data in x, y, z order
 # (z changes fastest, followed by y and x)
 #
-# TODO(sean): Use a "*" here for string repetition.
-# TODO(abel) Change this to use relations.
-
+# TODO define function to make useful.
+# TODO divide 3d-grid in to core-layer, surface-layer, axis-layer, origin-layer.
+# TODO sef function to  reflect axis-layer 2 times
+# TODO sef function to  reflect surface-layer 4 times
+# TODO sef function to  reflect core-layer 8 times
 
 import csv
 
@@ -76,17 +78,6 @@ for k in range(len(tmp_x)):
     neg_siso.append(tmp_siso[k] * 1)
 print('length of neg_x:', len(neg_x))
 print(neg_y[0])
-
-# while items_in_list < 1789288:
-#     if tmp_y[items_in_list] > 0:
-#         tmp_x.append(tmp_x[items_in_list] * -1)
-#     # tmp_y.append(tmp_y[items_in_list] * -1)
-#     # tmp_z.append(tmp_z[items_in_list] * 1)
-#     # tmp_siso.append(tmp_siso[items_in_list] * 1)
-#     else:
-#         items_in_list += 1
-# print(tmp_x[1789291])
-# print('length of tmp_x:', len(tmp_x))
 
 for z in list_y_zero:
     zero_x.append(ori_data_x[z])
