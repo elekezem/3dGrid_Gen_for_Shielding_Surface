@@ -35,6 +35,8 @@ with open('reflection-mp2.csv', 'r') as input:
         for i in range(MAXCOLS):
             cols[i].append(row[i] if i < len(row) else '')
 
+
+
 # change cols[i] data type into float
 ori_data_x = list(map(float, cols[0]))
 ori_data_y = list(map(float, cols[1]))
@@ -53,6 +55,7 @@ zero_y = []
 zero_z = []
 zero_siso = []
 
+print(list(map(lambda x:x*-1, ori_data_x)))
 
 for d in range(len(ori_data_x)):
     if ori_data_y[d] == 0.0:
@@ -85,12 +88,6 @@ for z in list_y_zero:
     zero_z.append(ori_data_z[z])
     zero_siso.append((ori_data_siso[z]))
 
-# def formart_digits(t, loop_t=None):
-#     for d in range(len(t)):
-#         data_t = "%.6f" % t[d]
-#         loop_t.appnd(data_t)
-#     return loop_t
-
 # change float digits into 6
 for d in range(len(tmp_x)):
     xdata = "%.6f" % tmp_x[d]
@@ -121,6 +118,8 @@ for d in range(len(neg_x)):
     neg_y_loop.append(nydata)
     neg_z_loop.append(nzdata)
     neg_siso_loop.append(nsisodata)
+
+
 
 
 # write cube file
