@@ -10,7 +10,7 @@ M = []
 N = []
 
 data = open('unsortcube', 'r')
-csv1 = csv.reader(data, delimiter='\t')
+csv1 = csv.reader(data, delimiter=',')
 
 for i in csv1:
     N = list(map(float, i))
@@ -19,7 +19,7 @@ for i in csv1:
 sort0 = sorted(M, key=operator.itemgetter(0, 1, 2))
 
 with open('fullgrid', 'w', newline='') as csvfile:
-    cubewriter = csv.writer(csvfile, delimiter='\t',
+    cubewriter = csv.writer(csvfile, delimiter=',',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
     for eachline in sort0:
         cubewriter.writerow(eachline)

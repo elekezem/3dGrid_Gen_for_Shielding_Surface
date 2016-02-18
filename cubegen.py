@@ -12,7 +12,7 @@ import csv
 MAXCOLS = 9
 cols = [[] for _ in range(MAXCOLS)]
 with open('fullgrid', 'r') as data:
-    for row in csv.reader(data, delimiter='\t'):
+    for row in csv.reader(data, delimiter=','):
         for i in range(MAXCOLS):
             cols[i].append(row[i] if i < len(row) else '')
 
@@ -73,7 +73,7 @@ with open('cube.cube', 'w', newline='') as csvfile:
         if c + 6 + rest2 <= len(siso):
             cubewriter2.writerow([siso[c+p] for p in range(6)])
         else:
-            cubewriter2.writerow([siso[c], siso[c + 1], siso[c + 2]])
+            cubewriter2.writerow([siso[c], siso[c + 1], siso[c + 2],siso[c + 3],siso[c + 4]])
     pass
 csvfile.close()
 print(len(siso))
