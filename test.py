@@ -24,6 +24,7 @@ def read_csv(MAXCOLS, filename):
 
 # divide origin data ori-layer, axis-layer, surface-layer, core-layer
 def di_layers(data):
+
     ori = []
     axis_x = []
     axis_y = []
@@ -116,7 +117,7 @@ def reflect_c3d(data):
 
 def reflect_d2d(reflect):
     for d in range(len(reflect)):
-        reflect.append([-reflect[d][1], reflect[d][0], reflect[d][2], reflect[d][3]])
+        reflect.append([-reflect[d][0], -reflect[d][2], reflect[d][1], reflect[d][3]])
     #print(len(reflect))
 
     return reflect
@@ -145,6 +146,7 @@ data_unsort = reflect_d2d(extend_core(data_ori)) + extend_surface(data_ori)
 with open('unsortcube', 'w') as csvfile:
         cubewriter = csv.writer(csvfile, delimiter=',',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
+        print(len(data_unsort))
         for d in range(len(data_unsort)):
             cubewriter.writerow([data_unsort[d][0],data_unsort[d][1],data_unsort[d][2],data_unsort[d][3],])
         pass

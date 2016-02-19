@@ -16,7 +16,6 @@ with open('fullgrid', 'r') as data:
         for i in range(MAXCOLS):
             cols[i].append(row[i] if i < len(row) else '')
 
-
 # change cols[i] data type into float
 data4 = list(map(float, cols[3]))
 
@@ -48,9 +47,9 @@ with open('cube.cube', 'w', newline='') as csvfile:
     # N1, X1, Y1, Z1               # of increments in the slowest running direction
     # N2, X2, Y2, Z2
     # N3, X3, Y3, Z3               # of increments in the fastest running direction
-    cubewriter.writerow([2 * nx + 1, "%.6f" % (delta / br), "%.6f" % 0.000000, "%.6f" % 0.000000])
-    cubewriter.writerow([2 * ny + 1, "%.6f" % 0.0, "%.6f" % (delta / br), "%.6f" % 0.0])
-    cubewriter.writerow([2 * nz + 1, "%.6f" % 0.000000, "%.6f" % 0.000000, "%.6f" % (delta / br)])
+    cubewriter.writerow([2*nx + 1, "%.6f" % (delta / br), "%.6f" % 0.000000, "%.6f" % 0.000000])
+    cubewriter.writerow([2*ny + 1, "%.6f" % 0.000000, "%.6f" % (delta / br), "%.6f" % 0.000000])
+    cubewriter.writerow([2*nz + 1, "%.6f" % 0.000000, "%.6f" % 0.000000, "%.6f" % (delta / br)])
 
     # geo of c3h4
     # IA1, Chg1, X1, Y1, Z1        Atomic number, charge, and coordinates of the first atom
@@ -76,4 +75,3 @@ with open('cube.cube', 'w', newline='') as csvfile:
             cubewriter2.writerow([siso[c], siso[c + 1], siso[c + 2],siso[c + 3],siso[c + 4]])
     pass
 csvfile.close()
-print(len(siso))

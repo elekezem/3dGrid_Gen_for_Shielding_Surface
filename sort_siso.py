@@ -18,6 +18,8 @@ for i in csv1:
 
 sort0 = sorted(M, key=operator.itemgetter(0, 1, 2))
 
+print(sort0[0])
+
 with open('fullgrid', 'w', newline='') as csvfile:
     cubewriter = csv.writer(csvfile, delimiter=',',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
