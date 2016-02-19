@@ -1,14 +1,17 @@
 import csv
+import operator
+import time
+time_start = time.time()
 
 
-def read_csv(MAXCOLS, filename):
+def read_csv(maxcols, filename):
 
     data = []
-    cols = [[] for _ in range(MAXCOLS)]
+    cols = [[] for _ in range(maxcols)]
 
     with open(filename, 'r') as f:
         for row in csv.reader(f, delimiter=' '):
-            for i in range(MAXCOLS):
+            for i in range(maxcols):
                 cols[i].append(row[i] if i < len(row) else '')
 
     x = list(map(float, cols[0]))
@@ -118,7 +121,7 @@ def reflect_c3d(data):
 def reflect_d2d(reflect):
     for d in range(len(reflect)):
         reflect.append([-reflect[d][0], -reflect[d][2], reflect[d][1], reflect[d][3]])
-    #print(len(reflect))
+    # print(len(reflect))
 
     return reflect
 
@@ -127,7 +130,7 @@ def extend_core(data):
 
     half_core = di_layers(data)[1] + reflect_c2d(di_layers(data)[4]) + \
                 reflect_c2d(di_layers(data)[6]) + reflect_c3d(di_layers(data)[7])
-    #print(len(half_core))
+    # print(len(half_core))
     return half_core
 
 
@@ -135,19 +138,25 @@ def extend_surface(data):
 
     ref_surface = di_layers(data)[0] + reflect_c1d(di_layers(data)[2]) + \
                   reflect_c1d(di_layers(data)[3]) + reflect_c2d(reflect_c2d(di_layers(data)[5]))
-
-    #print(len(ref_surface))
+    # print(len(ref_surface))
     return ref_surface
 
 # -----------------------------main------------------------------- #
 data_ori = read_csv(4, 'reflection-mp2.csv')
 data_unsort = reflect_d2d(extend_core(data_ori)) + extend_surface(data_ori)
 
-with open('unsortcube', 'w') as csvfile:
-        cubewriter = csv.writer(csvfile, delimiter=',',
+sort0 = sorted(data_unsort, key=operator.itemgetter(0, 1, 2))
+
+print(sort0[0])
+
+with open('fullgrid', 'w', newline='') as csvfile:
+    cubewriter = csv.writer(csvfile, delimiter=',',
                             quotechar=' ', quoting=csv.QUOTE_MINIMAL)
-        print(len(data_unsort))
-        for d in range(len(data_unsort)):
-            cubewriter.writerow([data_unsort[d][0],data_unsort[d][1],data_unsort[d][2],data_unsort[d][3],])
-        pass
+    for eachline in sort0:
+        cubewriter.writerow(eachline)
+    pass
 csvfile.close()
+
+
+time_end = time.time()
+print('running time:', "%.2f" % (time_end - time_start), 'sec')
